@@ -36,6 +36,7 @@ export default function SearchBar() {
               flexDirection: "row",
               marginRight: 8,
               backgroundColor: "white",
+              padding: 9,
               borderRadius: 30,
               alignItems: "center",
             }}
@@ -45,7 +46,7 @@ export default function SearchBar() {
               size={11}
               style={{ marginRight: 6 }}
             />
-            <Text>Test</Text>
+            <Text>Search</Text>
           </View>
         )}
       />

@@ -1,4 +1,11 @@
-import { View, Text } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  FlatList,
+  StyleSheet,
+} from "react-native";
 import React from "react";
 
 const itemExample = [
@@ -30,8 +37,28 @@ const itemExample = [
 
 export default function Categories() {
   return (
-    <View>
-      <Text>Categories</Text>
+    <View
+      style={{
+        marginTop: 5,
+        backgroundColor: "#fff",
+        paddingVertical: 10,
+        paddingLeft: 20,
+      }}
+    >
+      <FlatList
+        data={itemExample}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        renderItem={({ item, index }) => (
+          <View key={index} style={{ alignItems: "center", marginRight: 30 }}>
+            <Image
+              source={item?.image}
+              style={{ width: 50, height: 40, resizeMode: "contain" }}
+            />
+            <Text style={{ fontSize: 13, fontWeight: "900" }}>{item.text}</Text>
+          </View>
+        )}
+      ></FlatList>
     </View>
   );
 }
