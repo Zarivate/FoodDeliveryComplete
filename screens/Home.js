@@ -1,12 +1,16 @@
 import { View, ScrollView } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import HeaderTabs from "../components/HeaderTabs";
 import { SafeAreaView } from "react-native-safe-area-context";
 import SearchBar from "../components/SearchBar";
 import Categories from "../components/Categories";
-import RestaurantItem from "../components/RestaurantItem";
+import RestaurantItems, {
+  restaurantSamples,
+} from "../components/RestaurantItems";
 
 export default function Home() {
+  const [restaurantData, setRestaurantData] = useState(restaurantSamples);
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#eee" }}>
       <View style={{ backgroundColor: "white", padding: 15 }}>
@@ -15,7 +19,7 @@ export default function Home() {
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Categories />
-        <RestaurantItem />
+        <RestaurantItems restaurantsData={restaurantData} />
       </ScrollView>
     </SafeAreaView>
   );
