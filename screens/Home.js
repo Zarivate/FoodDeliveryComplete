@@ -8,6 +8,8 @@ import RestaurantItems, {
   restaurantSamples,
 } from "../components/RestaurantItems";
 
+const YELP_API_KEY = "";
+
 export default function Home() {
   const [restaurantData, setRestaurantData] = useState(restaurantSamples);
 
