@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 import React from "react";
 
 const testFoods = [
@@ -31,21 +31,51 @@ const testFoods = [
     image:
       "https://www.thesun.co.uk/wp-content/uploads/2020/04/NINTCHDBPICT000577254125.jpg",
   },
+  {
+    title: "Heart Attack Sandwich",
+    description:
+      "Just look at it, it'll taste good on the way down but your blood sugar will hate you",
+    price: "$7.50",
+    image:
+      "https://www.thesun.co.uk/wp-content/uploads/2020/04/NINTCHDBPICT000577254125.jpg",
+  },
 ];
 
 export default function MenuItems() {
   return (
     <View>
-      <FoodDetails food={testFoods[0]} />
+      <ScrollView showsVerticalScrollIndicator={false}>
+        {testFoods.map((food, index) => (
+          <View key={index}>
+            <View style={styles.menuItemStyle}>
+              <FoodDetails food={food} />
+              <FoodImage food={food} />
+            </View>
+          </View>
+        ))}
+      </ScrollView>
     </View>
   );
 }
 
 const FoodDetails = (props) => (
-  <View style={{ width: 230, justifyContent: "space-evenly" }}>
-    <Text>{props.food.title}</Text>
+  <View style={{ width: 240, justifyContent: "space-evenly" }}>
+    <Text style={styles.titleStyle}>{props.food.title}</Text>
     <Text>{props.food.description}</Text>
     <Text>{props.food.price}</Text>
+  </View>
+);
+
+const FoodImage = (props) => (
+  <View>
+    <Image
+      source={{ uri: props.food.image }}
+      style={{
+        width: 100,
+        height: 100,
+        borderRadius: 8,
+      }}
+    />
   </View>
 );
 
@@ -54,5 +84,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     margin: 20,
+  },
+
+  titleStyle: {
+    fontSize: 19,
+    fontWeight: "600",
   },
 });

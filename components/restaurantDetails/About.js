@@ -2,11 +2,11 @@ import { View, Text, Image } from "react-native";
 import React from "react";
 
 const testImage =
-  "https://www.beyondpinkworld.com/Assets/News/2855/BP_1_636898382689406962.jpg";
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Restaurant_N%C3%A4sinneula.jpg/800px-Restaurant_N%C3%A4sinneula.jpg";
 
-const testTitle = "Toilet Restaurant";
+const testTitle = "Sample Restaurant";
 
-const testDescription = "Thai · Confort · $$ · 🎫 · 4 ⭐ (217+)";
+const testDescription = "Thai · Comfort · $$ · 🎫 · 4 ⭐ (217+)";
 
 export default function About() {
   return (
