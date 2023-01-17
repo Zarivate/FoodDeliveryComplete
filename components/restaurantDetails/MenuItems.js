@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 import React from "react";
+import { Divider } from "react-native-elements";
 
 const testFoods = [
   {
@@ -9,7 +10,7 @@ const testFoods = [
     image: "https://m.media-amazon.com/images/I/71949a+B2YL._SL1500_.jpg",
   },
   {
-    title: "Colon Cleanser",
+    title: "test2",
     description: "Literally one of the best ways to die that's under $20",
     price: "$12.57",
     image:
@@ -43,23 +44,22 @@ const testFoods = [
 
 export default function MenuItems() {
   return (
-    <View>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        {testFoods.map((food, index) => (
-          <View key={index}>
-            <View style={styles.menuItemStyle}>
-              <FoodDetails food={food} />
-              <FoodImage food={food} />
-            </View>
+    <ScrollView style={{ height: 400 }} showsVerticalScrollIndicator={false}>
+      {testFoods.map((food, index) => (
+        <View key={index}>
+          <View style={styles.menuItemStyle}>
+            <FoodDetails food={food} />
+            <FoodImage food={food} />
           </View>
-        ))}
-      </ScrollView>
-    </View>
+          <Divider width={0.5} />
+        </View>
+      ))}
+    </ScrollView>
   );
 }
 
 const FoodDetails = (props) => (
-  <View style={{ width: 240, justifyContent: "space-evenly" }}>
+  <View style={{ width: 230, justifyContent: "space-evenly" }}>
     <Text style={styles.titleStyle}>{props.food.title}</Text>
     <Text>{props.food.description}</Text>
     <Text>{props.food.price}</Text>
