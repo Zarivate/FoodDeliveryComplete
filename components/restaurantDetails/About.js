@@ -1,19 +1,32 @@
 import { View, Text, Image } from "react-native";
 import React from "react";
 
-const testImage =
-  "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Restaurant_N%C3%A4sinneula.jpg/800px-Restaurant_N%C3%A4sinneula.jpg";
+const yelpDataTest = {
+  name: "Sample Restaurant",
+  image:
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Restaurant_N%C3%A4sinneula.jpg/800px-Restaurant_N%C3%A4sinneula.jpg",
+  price: "$$",
+  reviews: "217",
+  rating: "3.1",
+  categories: [{ title: "Thai" }, { title: "Comfort" }],
+};
 
-const testTitle = "Sample Restaurant";
+const { name, image, price, reviews, rating, categories } = yelpDataTest;
 
-const testDescription = "Thai · Comfort · $$ · 🎫 · 4 ⭐ (217+)";
+const formattedCategories = categories
+  .map((category) => category.title)
+  .join(" · ");
+
+const description = `${formattedCategories} ${
+  price ? " · " + price : ""
+} · 🎫 · ${rating} ⭐ (${reviews}+)`;
 
 export default function About() {
   return (
     <View>
-      <RestaurantImage image={testImage} />
-      <RestaurantTitle title={testTitle} />
-      <RestaurantDescription description={testDescription} />
+      <RestaurantImage image={image} />
+      <RestaurantName title={name} />
+      <RestaurantDescription description={description} />
     </View>
   );
 }
@@ -22,7 +35,7 @@ const RestaurantImage = (props) => (
   <Image source={{ uri: props.image }} style={{ width: "100%", height: 180 }} />
 );
 
-const RestaurantTitle = (props) => (
+const RestaurantName = (props) => (
   <Text
     style={{
       fontSize: 29,

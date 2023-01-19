@@ -13,7 +13,7 @@ import BottomTabs from "../components/home/BottomTabs";
 
 const YELP_API_KEY = YELP_FUSION_API_KEY;
 
-export default function Home() {
+export default function Home({ navigation }) {
   const [restaurantData, setRestaurantData] = useState(restaurantSamples);
   // Has to be passed to SearchBar component so data can be returned and change the "city" variable
   const [city, setCity] = useState("San Francisco");
@@ -52,7 +52,10 @@ export default function Home() {
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Categories />
-        <RestaurantItems restaurantsData={restaurantData} />
+        <RestaurantItems
+          restaurantsData={restaurantData}
+          navigation={navigation}
+        />
       </ScrollView>
       <Divider width={1} />
       <BottomTabs />
