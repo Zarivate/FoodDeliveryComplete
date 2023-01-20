@@ -32,19 +32,36 @@ export const restaurantSamples = [
   },
 ];
 
-export default function RestaurantItem(props) {
+export default function RestaurantItems({ navigation, ...props }) {
   return (
-    <TouchableOpacity activeOpacity={1} style={{ marginBottom: 30 }}>
+    <>
       {props.restaurantsData.map((restaurant, index) => (
-        <View
+        <TouchableOpacity
           key={index}
-          style={{ marginTop: 10, padding: 15, backgroundColor: "white" }}
+          activeOpacity={1}
+          style={{ marginBottom: 30 }}
+          onPress={() =>
+            navigation.navigate("RestaurantDetails", {
+              // Passing information to the RestaurantDetails component/screen as well. All the data below is considered the "route"
+              // that is destructured in the RestaurantDetails component
+              name: restaurant.name,
+              image: restaurant.image_url,
+              price: restaurant.price,
+              reviews: restaurant.review_count,
+              rating: restaurant.rating,
+              categories: restaurant.categories,
+            })
+          }
         >
-          <RestaurantImage image={restaurant.image_url} />
-          <RestaurantInfo name={restaurant.name} rating={restaurant.rating} />
-        </View>
+          <View
+            style={{ marginTop: 10, padding: 15, backgroundColor: "white" }}
+          >
+            <RestaurantImage image={restaurant.image_url} />
+            <RestaurantInfo name={restaurant.name} rating={restaurant.rating} />
+          </View>
+        </TouchableOpacity>
       ))}
-    </TouchableOpacity>
+    </>
   );
 }
 

@@ -3,13 +3,16 @@ import React from "react";
 import { Divider } from "react-native-elements";
 import About from "../components/restaurantDetails/About";
 import MenuItems from "../components/restaurantDetails/MenuItems";
+import ViewCart from "../components/restaurantDetails/ViewCart";
 
-export default function RestaurantDetails({ route }) {
+export default function RestaurantDetails({ route, navigation }) {
   return (
     <View>
+      {/* Here the data passed to RestaurantDetails from RestaurantItems is sent to the About component/screen */}
       <About route={route} />
       <Divider width={1.8} style={{ marginVertical: 20 }} />
       <MenuItems />
+      <ViewCart navigation={navigation} restaurantName={route.params.name} />
     </View>
   );
 }

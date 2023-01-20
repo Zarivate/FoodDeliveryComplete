@@ -54,6 +54,7 @@ export default function Home({ navigation }) {
         <Categories />
         <RestaurantItems
           restaurantsData={restaurantData}
+          // Navigation passed here so component RestaurantItems has access to navigation and can be destructured
           navigation={navigation}
         />
       </ScrollView>

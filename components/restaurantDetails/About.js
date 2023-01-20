@@ -11,17 +11,17 @@ const yelpDataTest = {
   categories: [{ title: "Thai" }, { title: "Comfort" }],
 };
 
-const { name, image, price, reviews, rating, categories } = yelpDataTest;
+export default function About(props) {
+  const { name, image, price, reviews, rating, categories } =
+    props.route.params;
 
-const formattedCategories = categories
-  .map((category) => category.title)
-  .join(" · ");
+  const formattedCategories = categories
+    .map((category) => category.title)
+    .join(" · ");
 
-const description = `${formattedCategories} ${
-  price ? " · " + price : ""
-} · 🎫 · ${rating} ⭐ (${reviews}+)`;
-
-export default function About() {
+  const description = `${formattedCategories} ${
+    price ? " · " + price : ""
+  } · 🎫 · ${rating} ⭐ (${reviews}+)`;
   return (
     <View>
       <RestaurantImage image={image} />
