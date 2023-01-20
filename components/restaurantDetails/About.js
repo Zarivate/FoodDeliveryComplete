@@ -1,16 +1,6 @@
 import { View, Text, Image } from "react-native";
 import React from "react";
 
-const yelpDataTest = {
-  name: "Sample Restaurant",
-  image:
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Restaurant_N%C3%A4sinneula.jpg/800px-Restaurant_N%C3%A4sinneula.jpg",
-  price: "$$",
-  reviews: "217",
-  rating: "3.1",
-  categories: [{ title: "Thai" }, { title: "Comfort" }],
-};
-
 export default function About(props) {
   const { name, image, price, reviews, rating, categories } =
     props.route.params;
