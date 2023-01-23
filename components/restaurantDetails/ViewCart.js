@@ -1,10 +1,14 @@
-import { View, Text, TouchableOpacity } from "react-native";
-import React from "react";
+import { View, Text, TouchableOpacity, Modal, StyleSheet } from "react-native";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
 export default function ViewCart() {
-  // Grabs whatever items are in the current state, the cartReducer state anyways
-  const items = useSelector((state) => state.cartReducer.selectedItems.items);
+  const [modalVisible, setModalVisible] = useState(false);
+
+  // Grabs whatever items are in the current state, the cartReducer state anyways, alongside the name ofthe restaurant for the checkout screen
+  const { items, restaurantName } = useSelector(
+    (state) => state.cartReducer.selectedItems
+  );
 
   // Function to return calculated total. Replaces the dollar sign with a blank/empty string then adds up the
   // prices. Reduce will start total at 0 as well.
@@ -17,10 +21,43 @@ export default function ViewCart() {
     currency: "USD",
   });
 
-  console.log("Total so far is " + totalPrice);
+  const modalContent = () => {
+    return (
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: 30,
+        }}
+      >
+        <View
+          style={{
+            backgroundColor: "black",
+            padding: 10,
+            borderRadius: 30,
+            width: 150,
+            alignItems: "center",
+          }}
+        >
+          <TouchableOpacity onPress={() => setModalVisible(false)}>
+            <Text style={{ color: "white" }}>Checkout</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  };
 
   return (
     <>
+      <Modal
+        animationType="slide"
+        visible={modalVisible}
+        transparent={true}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        {modalContent()}
+      </Modal>
       {total ? (
         <View
           style={{
@@ -52,6 +89,7 @@ export default function ViewCart() {
                 width: 300,
                 position: "relative",
               }}
+              onPress={() => setModalVisible(true)}
             >
               <Text style={{ color: "white", fontSize: 20, marginRight: 50 }}>
                 View Cart
