@@ -7,8 +7,6 @@ import { Provider as ReduxProvider } from "react-redux";
 import { store } from "./redux/store";
 //import configureStore from "./redux/store";
 
-const store2 = store;
-
 export default function RootNavigation() {
   const Stack = createStackNavigator();
 
@@ -17,7 +15,7 @@ export default function RootNavigation() {
   };
 
   return (
-    <ReduxProvider store={store2}>
+    <ReduxProvider store={store}>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Home" screenOptions={screenOptions}>
           <Stack.Screen name="Home" component={Home} />
