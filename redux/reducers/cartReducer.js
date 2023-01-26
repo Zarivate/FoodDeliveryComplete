@@ -7,7 +7,7 @@ let cartReducer = (state = defaultState, action) => {
     case "ADD_TO_CART": {
       let newState = { ...state };
       if (action.payload.checkboxValue) {
-        console.log("Added to cart");
+        //console.log("Added to cart");
         newState.selectedItems = {
           // New item will be what was already in the cart plus whatever was sent in
           items: [...newState.selectedItems.items, action.payload],
@@ -16,7 +16,7 @@ let cartReducer = (state = defaultState, action) => {
 
         // If check box is false, filter out item that has matching title in cart
       } else {
-        console.log("Removed from cart");
+        //console.log("Removed from cart");
         newState.selectedItems = {
           items: [
             ...newState.selectedItems.items.filter(
@@ -26,7 +26,7 @@ let cartReducer = (state = defaultState, action) => {
           restaurantName: action.payload.restaurantName,
         };
       }
-      console.log(newState, "got here");
+      //console.log(newState, "got here");
       return newState;
     }
 
