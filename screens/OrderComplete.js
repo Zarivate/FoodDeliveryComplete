@@ -64,10 +64,14 @@ export default function OrderComplete() {
           Your order for {restaurantName} has been placed for ${totalPrice}
         </Text>
         <ScrollView>
-          <MenuItems testFoods={lastOrder.items} hideCheckbox={true} />
+          <MenuItems
+            testFoods={lastOrder.items}
+            hideCheckbox={true}
+            marginLeft={10}
+          />
 
           <LottieView
-            style={{ height: 200, alignSelf: "center", marginBottom: 25 }}
+            style={{ height: 100, alignSelf: "center", marginBottom: 25 }}
             source={require("../assets/animations/cooking.json")}
             autoPlay
             speed={0.75}

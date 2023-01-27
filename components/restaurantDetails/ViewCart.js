@@ -3,9 +3,11 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import OrderItem from "./OrderItem";
 import firebase from "../../firebase";
+import LottieView from "lottie-react-native";
 
 export default function ViewCart({ navigation }) {
   const [modalVisible, setModalVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   // Grabs whatever items are in the current state, the cartReducer state anyways, alongside the name ofthe restaurant for the checkout screen
   const { items, restaurantName } = useSelector(
@@ -24,18 +26,24 @@ export default function ViewCart({ navigation }) {
   });
 
   const addToFirebase = () => {
+    setLoading(true);
     const db = firebase.firestore();
-    db.collection("orders").add({
-      items: items,
-      restaurantName: restaurantName,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-    });
-    setModalVisible(false);
-    navigation.navigate("OrderComplete");
+    db.collection("orders")
+      .add({
+        items: items,
+        restaurantName: restaurantName,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      })
+      .then(() => {
+        setTimeout(() => {
+          //setLoading(false);
+          navigation.navigate("OrderComplete");
+        }, 2500);
+      }); // Manually set a loading for 2.5 seconds to emulate loading screen,
   };
 
   const styles = StyleSheet.create({
-    modalCOntainer: {
+    modalContainer: {
       // So takes up entire screen length
       flex: 1,
       // So modal content shows up at bottom instead of top of screen
@@ -74,7 +82,7 @@ export default function ViewCart({ navigation }) {
   const modalContent = () => {
     return (
       <>
-        <View style={styles.modalCOntainer}>
+        <View style={styles.modalContainer}>
           <View style={styles.modalCheckoutContainer}>
             <Text style={styles.restaurantName}>{restaurantName}</Text>
             {/* TODO 
@@ -99,6 +107,7 @@ export default function ViewCart({ navigation }) {
                 }}
                 onPress={() => {
                   addToFirebase();
+                  setModalVisible(false);
                 }}
               >
                 <Text style={{ color: "white", fontSize: 20 }}>Checkout</Text>
@@ -139,15 +148,14 @@ export default function ViewCart({ navigation }) {
             flexDirection: "row",
             justifyContent: "center",
             position: "absolute",
-            bottom: 25,
-            zIndex: 999,
+            bottom: 5,
+            zIndex: 900,
           }}
         >
           <View
             style={{
               flexDirection: "row",
               justifyContent: "center",
-
               width: "100%",
             }}
           >
@@ -167,11 +175,33 @@ export default function ViewCart({ navigation }) {
               <Text style={{ color: "white", fontSize: 20, marginRight: 50 }}>
                 View Cart
               </Text>
-              <Text
-                style={{ color: "white", fontSize: 20 }}
-              >{`$${totalPrice}`}</Text>
+              <Text style={{ color: "white", fontSize: 20 }}>
+                ${totalPrice}
+              </Text>
             </TouchableOpacity>
           </View>
+        </View>
+      ) : (
+        <></>
+      )}
+      {loading ? (
+        <View
+          style={{
+            backgroundColor: "black",
+            position: "absolute",
+            opacity: 0.6,
+            justifyContent: "center",
+            alignItems: "center",
+            height: "110%",
+            width: "100%",
+          }}
+        >
+          <LottieView
+            style={{ height: 300 }}
+            source={require("../../assets/animations/scanner.json")}
+            autoPlay
+            speed={3}
+          />
         </View>
       ) : (
         <></>
