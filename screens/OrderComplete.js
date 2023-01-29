@@ -5,7 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import LottieView from "lottie-react-native";
 import firebase from "firebase/compat";
 import MenuItems from "../components/restaurantDetails/MenuItems";
-import { ScrollView } from "react-native";
+import { ScrollView, FlatList } from "react-native";
 
 export default function OrderComplete() {
   const [lastOrder, setLastOrder] = useState({
