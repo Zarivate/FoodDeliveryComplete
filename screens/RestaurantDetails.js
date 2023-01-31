@@ -36,20 +36,28 @@ const testFoods = [
       "https://www.thesun.co.uk/wp-content/uploads/2020/04/NINTCHDBPICT000577254125.jpg",
   },
   {
-    title: "Heart Attack Sandwich",
+    title: "Test Pancakes",
     description:
-      "Just look at it, it'll taste good on the way down but your blood sugar will hate you",
-    price: "$7.99",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean condimentum semper euismod. Nunc dapibus mauris a ligula blandit tristique. Suspendisse et dignissim arcu. Curabitur massa nibh, eleifend at dapibus placerat, lobortis sit amet sem. Aenean nec magna vitae risus commodo scelerisque. Nam lacinia arcu a leo volutpat, et viverra purus molestie. Mauris ut semper dui, in placerat nibh.",
+    price: "$3.55",
     image:
-      "https://www.thesun.co.uk/wp-content/uploads/2020/04/NINTCHDBPICT000577254125.jpg",
+      "https://tastykitchen.com/wp-content/uploads/2011/03/Tasty-Kitchen-Blog-The-Theme-is-Pancakes-Chocolate-Chip-Pancakes-with-Nutella-Maple-Syrup-submitted-by-TK-member-Kelly-of-Evil-Shenanigans.jpg",
   },
   {
-    title: "Heart Attack Sandwich",
+    title: "Budget burger",
     description:
-      "Just look at it, it'll taste good on the way down but your blood sugar will hate you",
-    price: "$7.99",
+      "In hac habitasse platea dictumst. Praesent nisi ante, congue vitae rhoncus nec, volutpat eu elit. Vivamus commodo at velit ut euismod. Aenean sed massa arcu. Sed at velit ante. Donec sed maximus risus. Fusce rutrum fringilla sem quis efficitur. Donec ullamcorper sapien metus. Nulla cursus maximus pulvinar. Quisque non vulputate est, non dapibus mi. Suspendisse id pharetra massa, ut laoreet felis.",
+    price: "$2.97",
     image:
-      "https://www.thesun.co.uk/wp-content/uploads/2020/04/NINTCHDBPICT000577254125.jpg",
+      "https://loveincorporated.blob.core.windows.net/contentimages/gallery/70bc81c8-b277-407d-8c3a-5c1a3e501732-4-hamburger.jpg",
+  },
+  {
+    title: "Taco Tacos",
+    description:
+      "In hac habitasse platea dictumst. Praesent nisi ante, congue vitae rhoncus nec, volutpat eu elit. Vivamus commodo at velit ut euismod. Aenean sed massa arcu. Sed at velit ante. Donec sed maximus risus. Fusce rutrum fringilla sem quis efficitur. Donec ullamcorper sapien metus. Nulla cursus maximus pulvinar. Quisque non vulputate est, non dapibus mi. Suspendisse id pharetra massa, ut laoreet felis.",
+    price: "$2.97",
+    image:
+      "https://loveincorporated.blob.core.windows.net/contentimages/gallery/671e271d-b43d-4924-8d43-fbf254c37f8f-bao-buns.jpg",
   },
 ];
 
