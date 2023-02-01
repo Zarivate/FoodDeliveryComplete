@@ -61,7 +61,8 @@ export default function OrderComplete() {
           loop={true}
         />
         <Text style={{ fontSize: 20, fontWeight: "bold" }}>
-          Your order for {restaurantName} has been placed for ${totalPrice}
+          Your order for {restaurantName} has been placed for $
+          {Math.floor(totalPrice * 100) / 100}
         </Text>
         <ScrollView>
           <MenuItems

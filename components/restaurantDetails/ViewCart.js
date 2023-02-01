@@ -1,4 +1,11 @@
-import { View, Text, TouchableOpacity, Modal, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Modal,
+  StyleSheet,
+  FlatList,
+} from "react-native";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import OrderItem from "./OrderItem";
@@ -85,11 +92,13 @@ export default function ViewCart({ navigation }) {
         <View style={styles.modalContainer}>
           <View style={styles.modalCheckoutContainer}>
             <Text style={styles.restaurantName}>{restaurantName}</Text>
-            {/* TODO 
-              Adjust this to use a FlatList instead */}
-            {items.map((item, index) => (
-              <OrderItem key={index} item={item} />
-            ))}
+
+            <FlatList
+              data={items}
+              renderItem={({ item, index }) => (
+                <OrderItem key={index} item={item} />
+              )}
+            ></FlatList>
             <View style={styles.subtotalContainer}>
               <Text style={styles.subtotalText}>Subtotal</Text>
               <Text>${totalPrice}</Text>
