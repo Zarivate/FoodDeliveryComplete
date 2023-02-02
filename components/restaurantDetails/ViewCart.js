@@ -119,11 +119,19 @@ export default function ViewCart({ navigation }) {
                   setModalVisible(false);
                 }}
               >
-                <Text style={{ color: "white", fontSize: 20 }}>Checkout</Text>
+                <Text
+                  style={{
+                    color: "white",
+                    fontSize: 20,
+                    marginRight: 150,
+                  }}
+                >
+                  Checkout
+                </Text>
                 <Text
                   style={{
                     position: "absolute",
-                    right: 20,
+                    right: 30,
                     color: "white",
                     fontSize: 15,
                     top: 17,

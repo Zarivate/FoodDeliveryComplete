@@ -11,7 +11,6 @@ export default function SearchBar({ cityHandler }) {
       <GooglePlacesAutocomplete
         query={{ key: GOOGLE_APIKEY }}
         onPress={(data, details = null) => {
-          console.log(data.description);
           // Get the first part of the data retrieval that holds only the selected city by the user
           const city = data.description.split(",")[0];
           cityHandler(city);
